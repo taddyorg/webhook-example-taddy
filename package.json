@@ -1,0 +1,34 @@
+{
+  "name": "webhook-example-taddy",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "worker": "tsx watch src/worker.ts",
+    "worker:start": "node dist/worker.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.45.1",
+    "express": "^5.2.1",
+    "iovalkey": "^0.3.3",
+    "postgres": "^3.4.8"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.3",
+    "drizzle-kit": "^0.31.9",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

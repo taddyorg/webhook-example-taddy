@@ -1,0 +1,456 @@
+{
+  "id": "359c22aa-7acf-450e-a7f1-181146432325",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.podcastepisode": {
+      "name": "podcastepisode",
+      "schema": "",
+      "columns": {
+        "uuid": {
+          "name": "uuid",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hash": {
+          "name": "hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hash_timestamp": {
+          "name": "hash_timestamp",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "date_published": {
+          "name": "date_published",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "series_uuid": {
+          "name": "series_uuid",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "guid": {
+          "name": "guid",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "series_uuid_plus_guid": {
+          "name": "series_uuid_plus_guid",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "subtitle": {
+          "name": "subtitle",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "audio_url": {
+          "name": "audio_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "video_url": {
+          "name": "video_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "file_length": {
+          "name": "file_length",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "file_type": {
+          "name": "file_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "duration": {
+          "name": "duration",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "season_number": {
+          "name": "season_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "episode_number": {
+          "name": "episode_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "episode_type": {
+          "name": "episode_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "website_url": {
+          "name": "website_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_explicit_content": {
+          "name": "is_explicit_content",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_removed": {
+          "name": "is_removed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "series_hash": {
+          "name": "series_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_blocked": {
+          "name": "is_blocked",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rss_transcripts": {
+          "name": "rss_transcripts",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rss_chapters": {
+          "name": "rss_chapters",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rss_persons_hash": {
+          "name": "rss_persons_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "transcribe_status": {
+          "name": "transcribe_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "taddy_transcript_url": {
+          "name": "taddy_transcript_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "taddy_chunks_url": {
+          "name": "taddy_chunks_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "taddy_chapter_url": {
+          "name": "taddy_chapter_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "podcastepisode_series_uuid_plus_guid_unique": {
+          "name": "podcastepisode_series_uuid_plus_guid_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "series_uuid_plus_guid"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.podcastseries": {
+      "name": "podcastseries",
+      "schema": "",
+      "columns": {
+        "uuid": {
+          "name": "uuid",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source": {
+          "name": "source",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hash": {
+          "name": "hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hash_timestamp": {
+          "name": "hash_timestamp",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "genres_hash": {
+          "name": "genres_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "itunes_info_hash": {
+          "name": "itunes_info_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "date_published": {
+          "name": "date_published",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "itunes_id": {
+          "name": "itunes_id",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "series_type": {
+          "name": "series_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "copyright": {
+          "name": "copyright",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "country_of_origin": {
+          "name": "country_of_origin",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "language": {
+          "name": "language",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "website_url": {
+          "name": "website_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "author_name": {
+          "name": "author_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "content_type": {
+          "name": "content_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rss_url": {
+          "name": "rss_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rss_owner_name": {
+          "name": "rss_owner_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rss_owner_public_email": {
+          "name": "rss_owner_public_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_explicit_content": {
+          "name": "is_explicit_content",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_completed": {
+          "name": "is_completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_blocked": {
+          "name": "is_blocked",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "children_hash": {
+          "name": "children_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rss_persons_hash": {
+          "name": "rss_persons_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "transcribe_status": {
+          "name": "transcribe_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "genres": {
+          "name": "genres",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "ARRAY[]::text[]"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "podcastseries_hash_unique": {
+          "name": "podcastseries_hash_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "hash"
+          ]
+        },
+        "podcastseries_itunes_id_unique": {
+          "name": "podcastseries_itunes_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "itunes_id"
+          ]
+        },
+        "podcastseries_rss_url_unique": {
+          "name": "podcastseries_rss_url_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "rss_url"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
