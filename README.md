@@ -45,15 +45,17 @@ cp .env.example .env
 
 > **Note:** When running with Docker Compose, `DATABASE_URL` and `VALKEY_URL` are set automatically using the compose service names. The `POSTGRES_*` variables configure the PostgreSQL container.
 
-### Run database migrations (local dev only)
+#### Install Docker
+
+Install Docker (via `docker-ce`), enable the service, and allow your user to run containers without `sudo`:
 
 ```bash
-npm run db:migrate
+sudo apt install -y docker.io docker-compose-v2
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER
 ```
 
-## Running
-
-### Docker
+### Docker Compose
 
 Start all services (PostgreSQL, Valkey, server, and worker) with Docker Compose:
 
@@ -72,16 +74,6 @@ To remove the persisted PostgreSQL data as well:
 
 ```bash
 docker compose down -v
-```
-
-#### Ubuntu host setup
-
-Install Docker (via `docker-ce`), enable the service, and allow your user to run containers without `sudo`:
-
-```bash
-sudo apt install -y docker.io docker-compose-v2
-sudo systemctl enable --now docker
-sudo usermod -aG docker $USER
 ```
 
 ## Available Scripts
