@@ -42,8 +42,9 @@ cp .env.example .env
 | `POSTGRES_USER` | PostgreSQL username | `user` |
 | `POSTGRES_PASSWORD` | PostgreSQL password | `password` |
 | `POSTGRES_DB` | PostgreSQL database name | `podcastdata` |
+| `POSTGRES_PORT` | Host port to publish Postgres on | `5432` |
 
-> **Note:** When running with Docker Compose, `DATABASE_URL` and `VALKEY_URL` are set automatically using the compose service names. The `POSTGRES_*` variables configure the PostgreSQL container.
+> **Note:** When running with Docker Compose, `DATABASE_URL` and `VALKEY_URL` are set automatically using the compose service names. The `POSTGRES_*` variables configure the PostgreSQL container. `POSTGRES_PORT` only changes the port published to your host — the container and the internal `DATABASE_URL` always use `5432`.
 
 #### Install Docker
 

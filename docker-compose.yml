@@ -1,13 +1,12 @@
 services:
   postgres:
-    image: postgres:16.13
+    image: postgres:18.4
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-user}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
       POSTGRES_DB: ${POSTGRES_DB:-podcastdata}
-      POSTGRES_PORT: ${POSTGRES_PORT:-5432}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -17,7 +16,7 @@ services:
       retries: 5
 
   valkey:
-    image: valkey/valkey:8
+    image: valkey/valkey:9.1
     healthcheck:
       test: ["CMD", "valkey-cli", "ping"]
       interval: 5s
@@ -32,7 +31,7 @@ services:
       - "3000:3000"
     env_file: .env
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:${POSTGRES_PORT:-5432}/${POSTGRES_DB:-podcastdata}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-podcastdata}
       VALKEY_URL: valkey://valkey:6379
     depends_on:
       postgres:
@@ -46,7 +45,7 @@ services:
       dockerfile: Dockerfile.worker
     env_file: .env
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:${POSTGRES_PORT:-5432}/${POSTGRES_DB:-podcastdata}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-podcastdata}
       VALKEY_URL: valkey://valkey:6379
     depends_on:
       postgres:
